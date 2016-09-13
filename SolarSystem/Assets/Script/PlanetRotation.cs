@@ -42,11 +42,14 @@ public class PlanetRotation : MonoBehaviour
     public float RevolutionPeriod;
     private float TimeOfYear;
 
+    float prev;
+
     //
     private float TimeOfDay;
     private float RotationDirection;
     void Start()
     {
+        prev = 0;
         TimeOfDay = 0;
         if (Clockwise)
             RotationDirection = 1.0f;
@@ -70,18 +73,30 @@ public class PlanetRotation : MonoBehaviour
         TimeOfYear += Time.deltaTime;
         if (ParentBody != null)
         {
+
+            /*
             //transform.position = ParentBody.transform.position;
 
             transform.position = Vector3.Normalize(transform.position);
-
+            Debug.Log((TimeOfYear / RevolutionPeriod * 360.0f) - prev);
             //transform.RotateAround(ParentBody.transform.position, Vector3.up, TimeOfYear / RevolutionPeriod * 360.0f);
             transform.position = Quaternion.Euler(0, TimeOfYear / RevolutionPeriod * 360.0f, 0) * transform.position;
+            prev = TimeOfYear / RevolutionPeriod * 360.0f;
+
 
             transform.position = new Vector3(transform.position.x + ParentBody.transform.position.x, transform.position.y + ParentBody.transform.position.y, transform.position.z + ParentBody.transform.position.z);
 
-            Debug.Log(transform.position);
+            
 
             transform.Translate(DistanceFromParentBody * transform.position);
+           
+            */
+            transform.position = ParentBody.transform.position;
+            transform.Translate(DistanceFromParentBody * Vector3.right);
+            transform.RotateAround(ParentBody.transform.position, Vector3.up, TimeOfYear / RevolutionPeriod * 360.0f);
+            
+
+
         }
         else
             transform.position = new Vector3(DistanceFromParentBody, 0, 0);
