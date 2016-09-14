@@ -5,7 +5,7 @@
 
  Scale: 1 unit = 1000km
  * 
- * distance formula for planets (sun radius/1000) - (planet radius/1000)+ (planet distance from sun /100000)
+ * distance formula for planets (sun radius/1000) - (planet radius/1000)+ (planet distance from sun /100,000)
  * revolusion formula
  * 
  * 
@@ -42,14 +42,14 @@ public class PlanetRotation : MonoBehaviour
     public float RevolutionPeriod;
     private float TimeOfYear;
 
-    float prev;
+
 
     //
     private float TimeOfDay;
     private float RotationDirection;
     void Start()
     {
-        prev = 0;
+
         TimeOfDay = 0;
         if (Clockwise)
             RotationDirection = 1.0f;
@@ -74,27 +74,28 @@ public class PlanetRotation : MonoBehaviour
         if (ParentBody != null)
         {
 
-            /*
-            //transform.position = ParentBody.transform.position;
 
+            //transform.position = ParentBody.transform.position;
+            
             transform.position = Vector3.Normalize(transform.position);
-            Debug.Log((TimeOfYear / RevolutionPeriod * 360.0f) - prev);
+            
             //transform.RotateAround(ParentBody.transform.position, Vector3.up, TimeOfYear / RevolutionPeriod * 360.0f);
             transform.position = Quaternion.Euler(0, TimeOfYear / RevolutionPeriod * 360.0f, 0) * transform.position;
-            prev = TimeOfYear / RevolutionPeriod * 360.0f;
 
+            Debug.Log(transform.position);
 
             transform.position = new Vector3(transform.position.x + ParentBody.transform.position.x, transform.position.y + ParentBody.transform.position.y, transform.position.z + ParentBody.transform.position.z);
 
             
 
             transform.Translate(DistanceFromParentBody * transform.position);
-           
-            */
-            transform.position = ParentBody.transform.position;
-            transform.Translate(DistanceFromParentBody * Vector3.right);
-            transform.RotateAround(ParentBody.transform.position, Vector3.up, TimeOfYear / RevolutionPeriod * 360.0f);
-            
+
+            /*
+
+                    transform.position = ParentBody.transform.position;
+                transform.Translate(DistanceFromParentBody * Vector3.right);
+                transform.RotateAround(ParentBody.transform.position, Vector3.up, TimeOfYear / RevolutionPeriod * 360.0f);
+                    */
 
 
         }
