@@ -1,0 +1,14 @@
+.DS_Store
+/Library
+/Temp
+/obj
+/*.pdb
+/*.csproj
+/*.pidb
+/*.unityproj
+/*.sln
+/*.user
+/*.userprefs
+/*.suo
+/.vs
+/*.DotSettings

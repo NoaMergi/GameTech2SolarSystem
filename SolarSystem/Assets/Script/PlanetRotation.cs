@@ -99,7 +99,7 @@ public class PlanetRotation : MonoBehaviour
                 transform.position = ParentBody.transform.position;
                 transform.Translate(DistanceFromParentBody * Vector3.right);
                 transform.RotateAround(ParentBody.transform.position, Vector3.up, Time.deltaTime / RevolutionPeriod * 360.0f);
-                 
+                transform.rotation = Quaternion.identity;
 
 
         }
@@ -117,7 +117,7 @@ public class PlanetRotation : MonoBehaviour
     {
         Year();
         //Debug.Log
-        Day();
+        //Day();
     }
 
     void FixedUpdate()
