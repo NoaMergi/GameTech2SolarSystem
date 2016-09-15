@@ -117,7 +117,7 @@ public class PlanetRotation : MonoBehaviour
     {
         Year();
         //Debug.Log
-        //Day();
+        Day();
     }
 
     void FixedUpdate()
