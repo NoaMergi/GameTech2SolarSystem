@@ -1,22 +1,20 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class CameraScript : MonoBehaviour 
 {
 
-    public Vector3 offset;
-    Quaternion orientation;
+   public List<Camera> cameras;
 
 	// Use this for initialization
 	void Start () 
     {
-        orientation = transform.rotation;
+       
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
-       transform.localRotation = orientation;
-        //transform.Rotate(offset,Space.World);
+       
 	}
 }

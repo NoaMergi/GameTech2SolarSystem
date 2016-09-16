@@ -6,10 +6,10 @@ public class RotationScript : MonoBehaviour
     //6.963
 
 
-    public bool IsClockwise = true;
-    public float RotationPeriodInHours = 24f;
+    public bool isClockwise = true;
+    public float rotationPeriodInHours = 24f;
     public Vector3 offsetAxis;
-    public float offsetValue;
+    public Vector3 rotationAxis = Vector3.up;
 
     private const float timescale = 1f;
 
@@ -18,18 +18,18 @@ public class RotationScript : MonoBehaviour
 
     void Update()
     {
-        Debug.Log((Time.deltaTime * timescale / RotationPeriodInHours).ToString("F9"));
-        currentTime += Time.deltaTime * timescale / RotationPeriodInHours;
+        Debug.Log((Time.deltaTime * timescale / rotationPeriodInHours).ToString("F9"));
+        currentTime += Time.deltaTime * timescale / rotationPeriodInHours;
         currentTime %= 1.0f;
 
         float currentRotationAngle = currentTime * 360f;
 
-        if( !IsClockwise )
+        if( !isClockwise )
         {
             currentRotationAngle *= -1f;
         }
 
-        transform.rotation = Quaternion.AngleAxis( currentRotationAngle, Vector3.up );
+        transform.rotation = Quaternion.AngleAxis( currentRotationAngle, rotationAxis);
         transform.Rotate(offsetAxis);
         //transform.rotation = Quaternion.AngleAxis(offsetValue, offsetAxis);
     }
