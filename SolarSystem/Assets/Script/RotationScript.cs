@@ -7,7 +7,7 @@ public class RotationScript : MonoBehaviour
 
 
     public bool isClockwise = true;
-    public float rotationPeriodInHours = 24f;
+    public float rotationPeriodInHours;
     public Vector3 offsetAxis;
     public Vector3 rotationAxis = Vector3.up;
 
