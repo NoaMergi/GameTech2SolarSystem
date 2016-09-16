@@ -11,14 +11,15 @@ public class RotationScript : MonoBehaviour
     public Vector3 offsetAxis;
     public float offsetValue;
 
-
+    private const float timescale = 1f;
 
     //Rotation progress between 0 and 1
     private float currentTime = 0f;
 
     void Update()
     {
-        currentTime += Time.deltaTime / RotationPeriodInHours;
+        Debug.Log((Time.deltaTime * timescale / RotationPeriodInHours).ToString("F9"));
+        currentTime += Time.deltaTime * timescale / RotationPeriodInHours;
         currentTime %= 1.0f;
 
         float currentRotationAngle = currentTime * 360f;

@@ -11,9 +11,14 @@ public class DistanceFixer : MonoBehaviour
         Transform[] transforms = FindObjectsOfType<Transform>();
 
 
+
         for (int i = 0; i < transforms.Length; i++ )
         {
-            transforms[i].localPosition *= scale;
+            if (transforms[i].GetComponent<Camera>() == null)
+            {
+                transforms[i].localPosition *= scale;
+            }
+
         }
 	}
 	
