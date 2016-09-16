@@ -16,7 +16,7 @@ public class CameraScript : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
-       transform.rotation = orientation;
+       transform.localRotation = orientation;
         //transform.Rotate(offset,Space.World);
 	}
 }
