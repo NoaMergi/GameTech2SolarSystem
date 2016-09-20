@@ -30,7 +30,7 @@ public class RotationScript : MonoBehaviour
         }
 
         transform.rotation = Quaternion.AngleAxis( currentRotationAngle, rotationAxis);
-        transform.Rotate(offsetAxis);
+        //transform.Rotate(offsetAxis);
         //transform.rotation = Quaternion.AngleAxis(offsetValue, offsetAxis);
     }
 }

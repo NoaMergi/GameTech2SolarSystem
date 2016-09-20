@@ -16,7 +16,8 @@ public class DistanceFixer : MonoBehaviour
         {
             if (transforms[i].GetComponent<Camera>() == null)
             {
-                transforms[i].localPosition *= scale;
+                transforms[i].localPosition = scale * transforms[i].localPosition;
+                Debug.Log(transforms[i].name);
             }
 
         }
