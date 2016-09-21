@@ -18,7 +18,7 @@ public class RotationScript : MonoBehaviour
 
     void Update()
     {
-        Debug.Log((Time.deltaTime * timescale / rotationPeriodInHours).ToString("F9"));
+        //Debug.Log((Time.deltaTime * timescale / rotationPeriodInHours).ToString("F9"));
         currentTime += Time.deltaTime * timescale / rotationPeriodInHours;
         currentTime %= 1.0f;
 

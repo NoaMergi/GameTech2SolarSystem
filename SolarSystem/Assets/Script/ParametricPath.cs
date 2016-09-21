@@ -5,6 +5,8 @@ public class ParametricPath : MonoBehaviour {
 
     public GameObject parent = null;
 
+    private float ParentRad;
+
     public float Radius;
 
     public float Period;
@@ -19,11 +21,12 @@ public class ParametricPath : MonoBehaviour {
 
     public bool IsClockwise;
 
-   private int Direction;
+    private int Direction;
 
 	// Use this for initialization
 	void Start () 
     {
+        ParentRad = parent.GetComponent<PlanetDataScript>().getRad();
         if (IsClockwise)
         {
             Direction = 1;
@@ -84,8 +87,8 @@ public class ParametricPath : MonoBehaviour {
         PeriodStep += Time.deltaTime;
 
         float angle = PeriodStep / Period * 360.0f;
-
+        Debug.Log(A + ParentRad);
         //transform.localPosition = Circle(parent.transform.position, Normal, angle, Radius);
-        transform.localPosition = Ellipse(parent.transform.position, Normal, angle, A, B);
+        transform.localPosition = Ellipse(parent.transform.position, Normal, angle, A + ParentRad, B + ParentRad);
 	}
 }
