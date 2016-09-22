@@ -1,30 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class DistanceFixer : MonoBehaviour 
 {
 
-    public float scale = 0.03f;
+    public float scale = 1.0f;
+    public Slider mainSlider;
+    ParametricPath[] parametricPath;
 	// Use this for initialization
 	void Start () 
     {
-        Transform[] transforms = FindObjectsOfType<Transform>();
 
+        //originalScale = new Vector2(parametricPath[i].A, parametricPath[i].B);
+        parametricPath = FindObjectsOfType<ParametricPath>();
 
+	}
+	
 
-        for (int i = 0; i < transforms.Length; i++ )
+    // Invoked when the value of the slider changes.
+    public void ValueChangeCheck()
+    {
+        scale = mainSlider.value;
+
+        for (int i = 0; i < parametricPath.Length; i++)
         {
-            if (transforms[i].GetComponent<Camera>() == null)
-            {
-                transforms[i].localPosition = scale * transforms[i].localPosition;
-                //Debug.Log(transforms[i].name);
-            }
 
+            parametricPath[i].scaledA = parametricPath[i].getA() * scale;
+            parametricPath[i].scaledB = parametricPath[i].getB() * scale;
         }
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    }
+
+
 }

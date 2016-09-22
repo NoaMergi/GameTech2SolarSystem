@@ -5,28 +5,44 @@ public class ParametricPath : MonoBehaviour {
 
     public GameObject parent;
 
-    private float ParentRad;
+    
 
     public float Radius;
 
     public float Period;
 
-    private float PeriodStep;
+    public Vector3 Orientation;
 
-    public Vector3 Normal;
+    private Vector3 Normal;
 
-    public float A;
+    [SerializeField]
+    private float A;
 
-    public float B;
+    [SerializeField]
+    private float B;
 
     public bool IsClockwise;
 
+    private float ParentRad;
+
+    private float PeriodStep;
+
     private int Direction;
+
+    [HideInInspector]
+    public float scaledA;
+
+    [HideInInspector]
+    public float scaledB;
 
 	// Use this for initialization
 	void Start () 
     {
-        Debug.Log(parent);
+        scaledA = A;
+        scaledB = B;
+
+        Normal = new Vector3(0, 1, 0);
+
         ParentRad = parent.GetComponent<PlanetDataScript>().getRad();
         if (IsClockwise)
         {
@@ -37,6 +53,16 @@ public class ParametricPath : MonoBehaviour {
             Direction = -1;
         }
 	}
+
+    public float getA()
+    {
+        return A;
+    }
+
+    public float getB()
+    {
+        return B;
+    }
 
 
 
@@ -76,6 +102,7 @@ public class ParametricPath : MonoBehaviour {
 
         point.z += b * Mathf.Sin(angle * Mathf.Deg2Rad) * Direction;
 
+        Debug.Log(Orientation);
         return Quaternion.FromToRotation(Vector3.up, normal) * point;
 
     }
@@ -83,12 +110,13 @@ public class ParametricPath : MonoBehaviour {
 
 
     // Update is called once per frame
-    void Update () {
+    void Update () 
+    {
 
         PeriodStep += Time.deltaTime;
 
         float angle = PeriodStep / Period * 360.0f;
         //transform.localPosition = Circle(parent.transform.position, Normal, angle, Radius);
-        transform.localPosition = Ellipse(parent.transform.position, Normal, angle, A + ParentRad, B + ParentRad);
+        transform.localPosition = Ellipse(parent.transform.position, Orientation, angle, scaledA + ParentRad, scaledB + ParentRad);
 	}
 }
