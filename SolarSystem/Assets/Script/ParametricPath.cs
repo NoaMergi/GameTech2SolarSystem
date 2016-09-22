@@ -102,7 +102,7 @@ public class ParametricPath : MonoBehaviour {
 
         point.z += b * Mathf.Sin(angle * Mathf.Deg2Rad) * Direction;
 
-        Debug.Log(Orientation);
+
         return Quaternion.FromToRotation(Vector3.up, normal) * point;
 
     }
