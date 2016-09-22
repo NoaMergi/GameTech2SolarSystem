@@ -22,7 +22,6 @@ public class RotationScript : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(transform.childCount);
         Children = GetComponentsInChildren<Transform>();
     }
 
@@ -54,7 +53,6 @@ public class RotationScript : MonoBehaviour
         foreach (Transform child in Children)
         {
             child.parent = transform;
-            Debug.Log("parent");
             //child is your child transform
         }
         

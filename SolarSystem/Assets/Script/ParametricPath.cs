@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ParametricPath : MonoBehaviour {
 
-    public GameObject parent = null;
+    public GameObject parent;
 
     private float ParentRad;
 
@@ -26,6 +26,7 @@ public class ParametricPath : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
+        Debug.Log(parent);
         ParentRad = parent.GetComponent<PlanetDataScript>().getRad();
         if (IsClockwise)
         {
