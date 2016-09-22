@@ -87,7 +87,6 @@ public class ParametricPath : MonoBehaviour {
         PeriodStep += Time.deltaTime;
 
         float angle = PeriodStep / Period * 360.0f;
-        Debug.Log(A + ParentRad);
         //transform.localPosition = Circle(parent.transform.position, Normal, angle, Radius);
         transform.localPosition = Ellipse(parent.transform.position, Normal, angle, A + ParentRad, B + ParentRad);
 	}

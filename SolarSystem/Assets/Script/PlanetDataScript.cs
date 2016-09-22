@@ -21,7 +21,6 @@ public class PlanetDataScript : MonoBehaviour
 
     public float getRad()
     {
-        Debug.Log(PlanetRadius * SizeScale);
         return PlanetRadius * SizeScale;
     }
 }

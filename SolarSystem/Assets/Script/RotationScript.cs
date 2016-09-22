@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class RotationScript : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class RotationScript : MonoBehaviour
 
     public bool isClockwise = true;
     public float rotationPeriodInHours;
+
+    Transform[] Children;
+
     public Vector3 offsetAxis;
     public Vector3 rotationAxis = Vector3.up;
 
@@ -15,6 +19,12 @@ public class RotationScript : MonoBehaviour
 
     //Rotation progress between 0 and 1
     private float currentTime = 0f;
+
+    void Start()
+    {
+        Debug.Log(transform.childCount);
+        Children = GetComponentsInChildren<Transform>();
+    }
 
     void Update()
     {
@@ -24,13 +34,30 @@ public class RotationScript : MonoBehaviour
 
         float currentRotationAngle = currentTime * 360f;
 
+        
+
         if( !isClockwise )
         {
             currentRotationAngle *= -1f;
         }
 
+        transform.DetachChildren();
+
         transform.rotation = Quaternion.AngleAxis( currentRotationAngle, rotationAxis);
-        //transform.Rotate(offsetAxis);
+        transform.Rotate(offsetAxis);
+        /*
+        if (camera != null)
+        {
+            camera.transform.parent = transform;
+        }*/
+
+        foreach (Transform child in Children)
+        {
+            child.parent = transform;
+            Debug.Log("parent");
+            //child is your child transform
+        }
+        
         //transform.rotation = Quaternion.AngleAxis(offsetValue, offsetAxis);
     }
 }
