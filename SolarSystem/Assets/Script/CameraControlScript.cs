@@ -69,6 +69,10 @@ public class CameraControlScript : MonoBehaviour
                 unableCameras();
                 cameras[9].enabled = true;
             }
+            else if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.Quit();
+            }
         }
     }
 
