@@ -30,8 +30,10 @@ public class DistanceFixer : MonoBehaviour
 
             parametricPath[i].scaledA = parametricPath[i].getA() * scale;
             parametricPath[i].scaledB = parametricPath[i].getB() * scale;
+            parametricPath[i].ScaledberrayCenter = parametricPath[i].berrayCenter * scale;
         }
 
+        
     }
 
 

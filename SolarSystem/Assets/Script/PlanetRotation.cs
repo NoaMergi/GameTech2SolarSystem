@@ -10,7 +10,8 @@
  using UnityEngine;
 
 
-public class PlanetRotation : MonoBehaviour {
+public class PlanetRotation : MonoBehaviour
+{
 
     public GameObject ParentBody;
 
@@ -20,7 +21,8 @@ public class PlanetRotation : MonoBehaviour {
     //amount of time planet takes to rotate on itself
     public float RotationPeriod;
 
-
+    public static Vector3 berrayCenter;
+    public bool isPlanet = false;
 
     //related to the object rotating around something else
     public float DistanceFromParentBody;
@@ -31,6 +33,8 @@ public class PlanetRotation : MonoBehaviour {
     //
     private float TimeOfDay;
     private float RotationDirection;
+
+    
     void Start()
     {
         TimeOfDay = 0;
@@ -58,7 +62,10 @@ public class PlanetRotation : MonoBehaviour {
         {
             transform.position = ParentBody.transform.position;
             transform.Translate(DistanceFromParentBody * Vector3.right);
-            transform.RotateAround(ParentBody.transform.position, Vector3.up, TimeOfYear / RevolutionPeriod * 360.0f);
+            if (isPlanet)
+                transform.RotateAround(ParentBody.transform.position + berrayCenter, Vector3.up, TimeOfYear / RevolutionPeriod * 360.0f);
+            else
+                transform.RotateAround(ParentBody.transform.position, Vector3.up, TimeOfYear / RevolutionPeriod * 360.0f);
         }
         else
             transform.position = new Vector3(DistanceFromParentBody, 0, 0);

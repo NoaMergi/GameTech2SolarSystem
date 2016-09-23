@@ -14,6 +14,10 @@ public class ParametricPath : MonoBehaviour
 
     public Vector3 Orientation;
 
+    public Vector3 berrayCenter;
+    public Vector3 ScaledberrayCenter;
+    public bool isPlanet = false;
+
 
     [SerializeField]
     private float A;
@@ -50,7 +54,10 @@ public class ParametricPath : MonoBehaviour
         {
             Direction = -1;
         }
-	}
+
+        berrayCenter = new Vector3(14.9999551f, 0, 0);
+        ScaledberrayCenter = new Vector3(14.9999551f, 0, 0);
+}
 
     public float getA()
     {
@@ -115,6 +122,9 @@ public class ParametricPath : MonoBehaviour
 
         float angle = PeriodStep / Period * 360.0f;
         //transform.localPosition = Circle(parent.transform.position, Normal, angle, Radius);
-        transform.localPosition = Ellipse(parent.transform.position, Orientation, angle, scaledA + ParentRad, scaledB + ParentRad);
+        if (isPlanet)
+            transform.localPosition = Ellipse(parent.transform.position + ScaledberrayCenter, Orientation, angle, scaledA + ParentRad, scaledB + ParentRad);
+        else
+            transform.localPosition = Ellipse(parent.transform.position, Orientation, angle, scaledA + ParentRad, scaledB + ParentRad);
 	}
 }
