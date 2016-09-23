@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class DistanceFixer : MonoBehaviour 
 {
+    public delegate void distance();
+    public static event distance distanceChange = delegate { };
 
     public float scale = 1.0f;
     public Slider mainSlider;
@@ -22,13 +24,14 @@ public class DistanceFixer : MonoBehaviour
     public void ValueChangeCheck()
     {
         scale = mainSlider.value;
-
+        distanceChange.Invoke();
         for (int i = 0; i < parametricPath.Length; i++)
         {
 
             parametricPath[i].scaledA = parametricPath[i].getA() * scale;
             parametricPath[i].scaledB = parametricPath[i].getB() * scale;
         }
+
     }
 
 

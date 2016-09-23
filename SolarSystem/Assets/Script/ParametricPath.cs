@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ParametricPath : MonoBehaviour {
+public class ParametricPath : MonoBehaviour
+{
 
     public GameObject parent;
 
@@ -13,7 +14,6 @@ public class ParametricPath : MonoBehaviour {
 
     public Vector3 Orientation;
 
-    private Vector3 Normal;
 
     [SerializeField]
     private float A;
@@ -40,8 +40,6 @@ public class ParametricPath : MonoBehaviour {
     {
         scaledA = A;
         scaledB = B;
-
-        Normal = new Vector3(0, 1, 0);
 
         ParentRad = parent.GetComponent<PlanetDataScript>().getRad();
         if (IsClockwise)
